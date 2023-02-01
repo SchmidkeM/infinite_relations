@@ -1,8 +1,11 @@
-from relation import Relation
+from ..BaseRelations.relation import Relation
 
 class Union(Relation):
 
     def __init__(self, r1: Relation, r2: Relation):
+        if not r1.schema == r2.schema:
+            Exception("Cannot unite relations with different schemas")
+        super(Union, self).__init__(r1.schema)
         self.r1: Relation = r1
         self.r2: Relation = r2
 

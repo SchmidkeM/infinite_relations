@@ -1,3 +1,5 @@
+import sys
+from .relation import Relation
 
 class AddRelation(Relation):
     def __init__(self):

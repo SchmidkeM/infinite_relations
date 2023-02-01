@@ -36,3 +36,4 @@ class RelationSchema:
     def print(self):
         for attr in self.attribute_list:
             print(attr, end=" ")
+        print("")

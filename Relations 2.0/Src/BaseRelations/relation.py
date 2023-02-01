@@ -1,6 +1,6 @@
 from __future__ import annotations
-from relation_schema import RelationSchema
 from abc import ABC, abstractclassmethod
+from .relation_schema import RelationSchema
 
 # obecná relace, abstraktní třída
 class Relation(ABC):

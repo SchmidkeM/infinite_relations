@@ -1,6 +1,7 @@
 from __future__ import annotations
-from relation import Relation
-from relation_schema import RelationSchema
+from .relation_schema import RelationSchema
+from .relation import Relation
+
 
 class FiniteRelation(Relation):
 
@@ -12,6 +13,7 @@ class FiniteRelation(Relation):
         return False
 
     def can_is_member_loop(self):
+
         return False
 
     def members(self):
