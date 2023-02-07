@@ -1,4 +1,4 @@
-from ..Relations.relation import Relation
+from ..relations.relation import Relation
 
 class Union(Relation):
 
