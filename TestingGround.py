@@ -12,9 +12,14 @@ U = Union(R1, R2)
 U.print()
 
 
-AddRelation().print()
+A = AddRelation()
+A.print(10)
+
+if U.is_member(["Martin", 23]) and A.is_member([1_000_000, 10, 1_000_010]):
+    print("woohooo")
 
 
+# union: zip, set
 # reprezentovat n-tice jako slovníky
 # typová kontrola skrz Keys slovníku
 # funkce pro zakládání n-tic podle schématu

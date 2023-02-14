@@ -32,6 +32,9 @@ class RelationSchema:
             else:
                 new_schema.add_attr(attr)
         return (new_schema, common_attrs_list)
+    
+    def __len__(self):
+        return len(self.attribute_list)
 
     def print(self):
         for attr in self.attribute_list:
