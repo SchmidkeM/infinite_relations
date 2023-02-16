@@ -13,7 +13,9 @@ class ListRelation(Relation):
             if not isinstance(tuples[0], dict):
                 raise Exception("Tuples must be dictionaries")
         super().__init__(schema)
-        self.__tuples__: list = tuples
+        self.__tuples__ = []
+        for item in tuples:
+            self.insert(item)
 
     def can_be_infinite(self):
         return False
@@ -25,7 +27,7 @@ class ListRelation(Relation):
         return iter(self.__tuples__)
 
     def insert(self, tuple: dict):
-        if compare_lists_orderless(self.schema.attribute_list, tuple.keys()):
+        if compare_lists_orderless(self.schema().attribute_list, tuple.keys()):
             self.__tuples__.append(tuple)
         else:
             raise Exception("Trying to insert wrong type tuple")

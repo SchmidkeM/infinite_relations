@@ -3,8 +3,8 @@ from ..relations.relation_schema import RelationSchema
 
 class UnaryOperation(Relation):
     def __init__(self, relation: Relation):
-        super().__init__(relation.schema)
-        self.__original_relation__ = relation
+        super().__init__(relation.schema())
+        self.__original_relation__: Relation = relation
 
     def original_relation(self):
         return self.__original_relation__

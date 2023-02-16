@@ -6,7 +6,13 @@ from .relation_schema import RelationSchema
 class Relation(ABC):
 
     def __init__(self, schema: RelationSchema):
-        self.schema: RelationSchema = schema
+        self.__schema__: RelationSchema = schema
+
+    def schema(self):
+        return self.__schema__
+    
+    def attributes(self):
+        return self.schema().attribute_list
 
     def can_be_infinite(self):
         True
@@ -23,7 +29,7 @@ class Relation(ABC):
 
     def print(self, limit: int = 10_000):
         print("============")
-        self.schema.print()
+        self.schema().print()
         print("------------")
         for tuple in self.members():
             print(*tuple.values())
@@ -33,4 +39,4 @@ class Relation(ABC):
         print("============")
 
     def create_tuple(self, values: list):
-        return self.schema.__create_tuple__(values)
+        return self.schema().__create_tuple__(values)

@@ -19,7 +19,7 @@ class AddRelation(Relation):
         i = 0
         while True:
             for j in range(i+1):
-                yield dict_from_lists(self.schema.attribute_list, [j, i-j, i])
+                yield dict_from_lists(self.schema().attribute_list, [j, i-j, i])
             i += 1
 
     def is_member(self, element):
