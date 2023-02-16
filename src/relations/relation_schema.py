@@ -1,4 +1,5 @@
 from __future__ import annotations
+from ..utils import compare_lists_orderless
 
 class RelationSchema:
     def __init__(self, attribute_list: list):
@@ -36,7 +37,19 @@ class RelationSchema:
     def __len__(self):
         return len(self.attribute_list)
 
+    def __eq__(self, object):
+        return isinstance(object, RelationSchema) and compare_lists_orderless(object.attribute_list, self.attribute_list)
+
     def print(self):
         for attr in self.attribute_list:
             print(attr, end=" ")
         print("")
+
+    def __create_tuple__(self, values: list):
+        if len(values) == len(self):
+            return dict(zip(self.attribute_list, values))
+        else:
+            raise Exception("Wrong number of values to create a tuple")
+        
+    def is_subset_of(self, schema: RelationSchema):
+        return all(item in schema.attribute_list for item in self.attribute_list)

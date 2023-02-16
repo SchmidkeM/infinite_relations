@@ -18,13 +18,19 @@ class Relation(ABC):
     def members(self):
         pass
 
-    def is_member(self, tuple):
+    def is_member(self, tuple: dict):
         return tuple in self.members()
 
-    def print(self, limit=10_000):
+    def print(self, limit: int = 10_000):
+        print("============")
         self.schema.print()
+        print("------------")
         for tuple in self.members():
-            print(tuple)
+            print(*tuple.values())
             limit -= 1
             if limit == 0:
-                return
+                break
+        print("============")
+
+    def create_tuple(self, values: list):
+        return self.schema.__create_tuple__(values)
