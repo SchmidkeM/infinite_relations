@@ -9,7 +9,7 @@ class RelationSchema:
         new_schema: RelationSchema = RelationSchema(self.attribute_list.copy())
         for attr in S2.attribute_list:
             if attr in new_schema.attribute_list:
-                new_schema.attribute_list.append(attr + "'")
+                new_schema.attribute_list.append(attr + "_")
             else:
                 new_schema.attribute_list.append(attr)
         return new_schema

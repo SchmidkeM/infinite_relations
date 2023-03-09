@@ -1,7 +1,8 @@
 from itertools import zip_longest
-from ..relations.relation import Relation
-from .binary_operation import BinaryOperation
-from ..utils import flatten_list
+from ...relations.relation import Relation
+from ..binary_operation import BinaryOperation
+from ..difference import Difference
+
 
 class Intersection(BinaryOperation):
 
@@ -24,6 +25,6 @@ class Intersection(BinaryOperation):
     
     def members(self):
         if self.left().can_be_infinite():
-            return (x for x in self.left().members() if x in self.right().members())
+            return Difference(self.right(), Difference(self.right(), self.left())).members()
         else:
-            return (x for x in self.right().members() if x in self.left().members())
+            return Difference(self.left(), Difference(self.left(), self.right())).members()

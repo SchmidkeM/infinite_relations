@@ -1,7 +1,7 @@
 from ..relations.relation import Relation
 from .binary_operation import BinaryOperation
 
-class Subtraction(BinaryOperation):
+class Difference(BinaryOperation):
 
     def __init__(self, left: Relation, right: Relation):
         if not left.schema() == right.schema():
@@ -18,4 +18,4 @@ class Subtraction(BinaryOperation):
         return self.left().is_member(element) and not self.right().is_member(element)
     
     def members(self):
-        return (tuple for tuple in self.left().members() if tuple not in self.right().members())
+        return (tuple for tuple in self.left().members() if not self.right().is_member(tuple))
